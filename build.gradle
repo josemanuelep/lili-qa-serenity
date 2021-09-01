@@ -1,0 +1,56 @@
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.45")
+        classpath("org.gradle:test-retry-gradle-plugin:1.1.0")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: "org.gradle.test-retry"
+apply plugin: 'net.serenity-bdd.aggregator'
+
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '2.5.8'
+    serenityCucumberVersion = '2.5.8'
+    junitVersion = '4.13.1'
+    assertJVersion = '3.8.0'
+    logbackVersion = '1.2.3'
+}
+
+dependencies {
+    testImplementation 'net.serenity-bdd:serenity-core:1.9.9'
+    testImplementation 'net.serenity-bdd:serenity-junit:1.9.9'
+    testImplementation('junit:junit:4.12')
+    testImplementation('org.assertj:assertj-core:1.7.0')
+    testImplementation('org.slf4j:slf4j-simple:1.7.7')
+    implementation('org.slf4j:slf4j-simple:1.7.7')
+    implementation 'net.serenity-bdd:serenity-cucumber:1.9.5'
+    implementation group: 'net.serenity-bdd', name: 'serenity-ensure', version: '2.0.69'
+    implementation(group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: '2.0.80')
+    testImplementation('org.junit.jupiter:junit-jupiter:5.7.2')
+
+}
+test {
+    retry {
+        maxRetries = 1
+        maxFailures = 2
+        failOnPassedAfterRetry = true
+    }
+}
+
+gradle.startParameter.continueOnFailure = true
