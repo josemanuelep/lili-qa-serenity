@@ -1,11 +1,11 @@
 package co.com.webtest.certification.lili.model;
 
 public class User {
-    String user;
+    String userName;
     String password;
 
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
     public String getPassword() {

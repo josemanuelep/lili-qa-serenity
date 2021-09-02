@@ -1,6 +1,6 @@
 package co.com.webtest.certification.lili.model;
 
-import co.com.webtest.certification.lili.model.Builders.CredencialsBuilder;
+import co.com.webtest.certification.lili.model.builders.CredencialsBuilder;
 
 public class Credencials {
 

@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import static cucumber.api.SnippetType.CAMELCASE;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
+        tags = "@CreateIntent",
         features = "src/test/resources/features/agent_intents.feature",
         glue = "co.com.webtest.certification.lili.stepsdefinitions",
         snippets = CAMELCASE

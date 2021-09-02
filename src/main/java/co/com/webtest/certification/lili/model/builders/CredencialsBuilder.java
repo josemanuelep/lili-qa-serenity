@@ -1,4 +1,4 @@
-package co.com.webtest.certification.lili.model.Builders;
+package co.com.webtest.certification.lili.model.builders;
 
 import co.com.webtest.certification.lili.model.Credencials;
 import co.com.webtest.certification.lili.util.Builder;
@@ -19,7 +19,7 @@ public class CredencialsBuilder implements Builder<Credencials> {
         if (user!=null && !user.isEmpty()){
             setCredencialsByUser(user);
         }
-        return build();
+        return this.build();
     }
 
     public static Credencials getCredencials(String user){

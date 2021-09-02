@@ -7,7 +7,7 @@ import cucumber.api.java.en.Given;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
-import static co.com.webtest.certification.lili.model.Builders.CredencialsBuilder.getCredencials;
+import static co.com.webtest.certification.lili.model.builders.CredencialsBuilder.getCredencials;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 
 public class GeneralSteps {

@@ -3,6 +3,9 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.screenplay.targets.Target;
 
 public class LoginPage {
+    private LoginPage() {
+    }
+
     public static final Target SIGNIN_BUTTON = Target.the("Button to login").located(By.cssSelector("div.c-login-button"));
     public static final Target INPUT_ORGANIZATION = Target.the("Input to enter organization").located(By.name("organizationName"));
     public static final Target BTN_SUBMIT_ORGANIZATION = Target.the("Button to send organization").located(By.xpath("//button[@type='submit']"));

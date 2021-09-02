@@ -32,6 +32,6 @@ public class SearchIntent implements Task {
                 Click.on(SEARCH_BOX_INTENTS),
                 MoveMouse.to(SEARCH_BOX_INTENTS),
                 Enter.theValue(intentName.trim()).into(SEARCH_BOX_INTENTS).thenHit(Keys.ENTER).thenHit(Keys.SPACE).thenHit(Keys.BACK_SPACE),
-                Wait.oneMoment(1));
+                Wait.oneMoment(2));
     }
 }
