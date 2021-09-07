@@ -1,6 +1,5 @@
 package co.com.webtest.certification.lili.tasks;
 
-import co.com.webtest.certification.lili.interactions.Wait;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -28,13 +27,10 @@ public class SearchAgent implements Task {
     }
     @Override
     public <T extends Actor> void performAs(T actor) {
-
         actor.attemptsTo(WaitUntil.the(CIRLCE_LOADING, isNotVisible()).forNoMoreThan(15).seconds(),
                 WaitUntil.the(SEARCH_BOX_AGENT, isVisible()).forNoMoreThan(15).seconds(),
                 Enter.theValue(agentName.trim()).into(SEARCH_BOX_AGENT).thenHit(Keys.ENTER),
-                Wait.oneMoment(1),
                 WaitUntil.the(SEARCH_RESULT.of(agentName.trim()), isVisible()).forNoMoreThan(20).seconds(),
                 Click.on(SEARCH_RESULT.of(agentName)));
-
     }
 }

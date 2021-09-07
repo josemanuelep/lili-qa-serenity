@@ -5,10 +5,8 @@ import co.com.webtest.certification.lili.interactions.DeleteIntent;
 import co.com.webtest.certification.lili.interactions.OpenDesingItems;
 import co.com.webtest.certification.lili.model.FeatureData;
 import co.com.webtest.certification.lili.questions.IntentIsVisible;
-import co.com.webtest.certification.lili.tasks.CreateIntent;
-import co.com.webtest.certification.lili.tasks.SearchAgent;
-import co.com.webtest.certification.lili.tasks.SearchAgentFolder;
-import co.com.webtest.certification.lili.tasks.SearchIntent;
+import co.com.webtest.certification.lili.questions.IntentsHave;
+import co.com.webtest.certification.lili.tasks.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -33,7 +31,7 @@ public class AgentIntentsSteps {
         theActorInTheSpotlight().attemptsTo(SearchAgent.called(agentName));
     }
 
-    @And("^Open desing items$")
+    @And("^Open design items$")
     public void openDesingItems() {
         theActorInTheSpotlight().attemptsTo(OpenDesingItems.ofAgent());
     }
@@ -59,5 +57,14 @@ public class AgentIntentsSteps {
         theActorInTheSpotlight().attemptsTo(CreateIntent.withgivenIntensList(intentName, featureData));
     }
 
+    @Given("^Filter by date (.*)$")
+    public void filterByDate(String date) {
+        theActorInTheSpotlight().attemptsTo(FilterIntentByDate.of(date));
+    }
+
+    @Then("^the results should have correct date (.*) field$")
+    public void theResultsShouldHaveCorrectDateField(String date) {
+        theActorInTheSpotlight().should(seeThat(IntentsHave.correctDate(date)));
+    }
 
 }

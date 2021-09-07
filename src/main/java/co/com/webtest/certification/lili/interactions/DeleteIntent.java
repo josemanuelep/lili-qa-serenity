@@ -6,7 +6,6 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
-import static co.com.webtest.certification.lili.userinterface.AgentDetail.SEARCH_BOX_INTENTS;
 import static co.com.webtest.certification.lili.userinterface.AgentIntents.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 

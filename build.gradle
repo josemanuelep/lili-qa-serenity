@@ -52,5 +52,4 @@ test {
         failOnPassedAfterRetry = true
     }
 }
-
 gradle.startParameter.continueOnFailure = true

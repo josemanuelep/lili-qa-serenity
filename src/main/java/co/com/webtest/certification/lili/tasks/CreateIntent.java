@@ -9,7 +9,7 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,18 +50,25 @@ public class CreateIntent implements Task {
                 WaitUntil.the(INPUT_NAME_INTENT, isVisible()).forNoMoreThan(15).seconds(),
                 Enter.theValue(this.intentName).into(INPUT_NAME_INTENT)
         );
+        actor.attemptsTo(WaitUntil.the(INPUT_UTTERANCE_NAME, isVisible()).forNoMoreThan(15).seconds());
+        WebElement element = INPUT_UTTERANCE_NAME.resolveFor(actor);
+        element.sendKeys("Testing");
 
-        intentsToCreate.forEach((Intent intent) -> {
-            actor.attemptsTo(WaitUntil.the(INPUT_UTTERRANCE_NAME, isVisible()).forNoMoreThan(15).seconds(),
-                    Enter.theValue(intent.getUttercanceName()).into(INPUT_UTTERRANCE_NAME).thenHit(Keys.ENTER)
-            );
-        });
+//        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+//        intentsToCreate.forEach((Intent intent) -> {
+//
+//            WebElement element = CURRENT_INPUT_UTTERRANCE.resolveFor(actor);
+//            element.sendKeys("Testing");
+//            js.executeScript("document.querySelector('.utterance_adder>div>a>div').innerHTML= '"+intent.getUttercanceName()+"'");
+//            SendKeys.of(Keys.ENTER);
+//            getDriver().findElement(By.cssSelector(".utterance_adder>div")).sendKeys(Keys.ENTER);
+//        });
 
-        actor.attemptsTo(WaitUntil.the(BUTTON_SAVE_CHANGES, isVisible()).forNoMoreThan(15).seconds(),
-                Click.on(BUTTON_SAVE_CHANGES),
-                WaitUntil.the(ALERT_MESSAGE_AFTER_SAVE, isVisible()).forNoMoreThan(15).seconds(),
-                Click.on(BUTTON_CLOSE_ALERT)
-        );
+//        actor.attemptsTo(WaitUntil.the(BUTTON_SAVE_CHANGES, isVisible()).forNoMoreThan(15).seconds(),
+//                Click.on(BUTTON_SAVE_CHANGES),
+//                WaitUntil.the(ALERT_MESSAGE_AFTER_SAVE, isVisible()).forNoMoreThan(15).seconds(),
+//                Click.on(BUTTON_CLOSE_ALERT)
+//        );
 
     }
 }
