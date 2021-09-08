@@ -17,7 +17,7 @@ public class OpenDesingItems implements Interaction {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(WaitUntil.the(
-                DESING_ITEMS_TAB, isVisible()).forNoMoreThan(20).seconds(),
+                DESING_ITEMS_TAB, isVisible()).forNoMoreThan(30).seconds(),
                 Click.on(DESING_ITEMS_TAB));
     }
 }

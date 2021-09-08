@@ -6,11 +6,12 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.MoveMouse;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
 
 import static co.com.webtest.certification.lili.userinterface.AgentDetail.SEARCH_BOX_INTENTS;
+import static co.com.webtest.certification.lili.userinterface.AgentIntents.LOADING_SPINNER;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotVisible;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class SearchIntent implements Task {
@@ -21,16 +22,16 @@ public class SearchIntent implements Task {
         this.intentName = intentName;
     }
 
-    public static SearchIntent intoDesigItems(String intentName) {
+    public static SearchIntent intoDesignItems(String intentName) {
         return Tasks.instrumented(SearchIntent.class, intentName);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(WaitUntil.the(SEARCH_BOX_INTENTS, isVisible()).forNoMoreThan(15).seconds(),
+        actor.attemptsTo(WaitUntil.the(LOADING_SPINNER, isNotVisible()).forNoMoreThan(15).seconds(),
+                WaitUntil.the(SEARCH_BOX_INTENTS, isVisible()).forNoMoreThan(15).seconds(),
                 Wait.oneMoment(1),
                 Click.on(SEARCH_BOX_INTENTS),
-                MoveMouse.to(SEARCH_BOX_INTENTS),
                 Enter.theValue(intentName.trim()).into(SEARCH_BOX_INTENTS).thenHit(Keys.ENTER).thenHit(Keys.SPACE).thenHit(Keys.BACK_SPACE),
                 Wait.oneMoment(2));
     }

@@ -38,7 +38,7 @@ public class AgentIntentsSteps {
 
     @Then("^Search intent called (.*)$")
     public void searchIntentCalled(String intentName) {
-        theActorInTheSpotlight().attemptsTo(SearchIntent.intoDesigItems(intentName));
+        theActorInTheSpotlight().attemptsTo(SearchIntent.intoDesignItems(intentName));
     }
 
     @Then("^The inten should be visible (.*)$")
@@ -47,7 +47,7 @@ public class AgentIntentsSteps {
                 .orComplainWith(SearchIntentException.class, ALERT_MESSAGE_INTENT_NOT_FOUND));
     }
 
-    @When("^Intent is deleted should see confimation alert message$")
+    @When("^Intent is deleted should see confirmation alert message$")
     public void intentIsDeletedShouldSeeConfimationAlertMessage() {
         theActorInTheSpotlight().attemptsTo(DeleteIntent.fromCurrentAgent());
     }
@@ -67,4 +67,14 @@ public class AgentIntentsSteps {
         theActorInTheSpotlight().should(seeThat(IntentsHave.correctDate(date)));
     }
 
+    @Then("^edit intent called addressIntent adding these new utterances$")
+    public void editIntentCalledAddressIntentAddingTheseNewUtterances(List<FeatureData> featureData) {
+
+    }
+
+
+    @Then("^delete (\\d+) utterances$")
+    public void deleteUtterances(int numberOfIntentsToDelete) {
+
+    }
 }

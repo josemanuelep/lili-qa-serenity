@@ -14,7 +14,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.45")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.9")
         classpath("org.gradle:test-retry-gradle-plugin:1.1.0")
     }
 }
@@ -47,8 +47,8 @@ dependencies {
 }
 test {
     retry {
-        maxRetries = 1
-        maxFailures = 2
+        maxRetries = 2
+        maxFailures = 10
         failOnPassedAfterRetry = true
     }
 }
